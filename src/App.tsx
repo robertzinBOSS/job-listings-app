@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Card, Filters, Footer, Header } from './components';
+import { Filters, Footer, Header, List } from './components';
 import { Job } from './db';
 import data from './db/data.json';
 
@@ -22,15 +22,7 @@ export default function App(): JSX.Element {
                     {filters.length > 0 && (
                         <Filters filters={filters} setFilters={setFilters} />
                     )}
-                    <div className="m-5 grid gap-10 py-5 lg:my-10 lg:py-10">
-                        {jobs.map(j => (
-                            <Card
-                                key={j.id}
-                                job={j as Job}
-                                setFilters={setFilters}
-                            />
-                        ))}
-                    </div>
+                    <List jobs={jobs as Job[]} setFilters={setFilters} />
                 </div>
             </main>
             <Footer />
